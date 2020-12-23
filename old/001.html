@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+  <h1>ajax1</h1>
+  <div class="ajaxWrap1">
+
+  </div>
+  <h1>ajax2</h1>
+  <div class="ajaxWrap2">
+
+  </div>
+  <button>load</button>
+  <script>
+
+    document.querySelector('button').addEventListener('click',function(){
+      $('.ajaxWrap1').load('001t.html .lorem1');
+      $('.ajaxWrap2').load('001t.html .lorem2');
+    })
+  </script>
+</body>
+</html>

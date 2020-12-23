@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js">
+  </script>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>IP Address</th>
+      </tr>
+    </thead>
+  </table>
+
+  <a style="font-size:30px" href="mockdata.json">Original Data File</a>
+  <script>
+    $.ajax({
+      url: '003.json',
+      success: function (result) {
+        $('table').DataTable({
+          data: result,
+          columns: [{
+              data: 'first_name'
+            },
+            {
+              data: 'last_name'
+            },
+            {
+              data: 'email'
+            },
+            {
+              data: 'gender'
+            },
+            {
+              data: 'ip_address'
+            },
+          ]
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

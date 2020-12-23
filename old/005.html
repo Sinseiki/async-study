@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body>
+  <canvas class="english"></canvas>
+  <canvas class="math"></canvas>
+  <canvas class="history"></canvas>
+</body>
+
+<script>
+  let canvases = [];
+  for (const item of document.querySelectorAll('canvas')) {
+    canvases.push(item.getContext('2d'));
+  }
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', '005.json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+
+      const _data = JSON.parse(xhr.responseText);
+
+      const bar1 = new Chart(canvases[0], {
+        type: 'bar',
+        data: {
+          labels: [
+            _data[0].first_name,
+            _data[1].first_name,
+            _data[2].first_name,
+            _data[3].first_name,
+            _data[4].first_name
+          ],
+          datasets: [{
+            label: 'English',
+            backgroundColor: 'rgba(255, 127, 127,.5)',
+            borderColor: 'rgb(255, 127, 127)',
+            borderWidth: 1,
+            data: [
+              _data[0].english,
+              _data[1].english,
+              _data[2].english,
+              _data[3].english,
+              _data[4].english,
+            ],
+          }],
+
+          options: {
+            responsive: true,
+            legend: {
+              position: 'top'
+            },
+            title: {
+              display: true,
+              text: 'English Chart'
+            }
+          }
+        }
+      })
+    }
+  }
+  xhr.send();
+</script>
+
+</html>
