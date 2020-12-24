@@ -1,3 +1,5 @@
+//tsc 003 -lib esnext,dom
+
 (async function(){
   const resultObj = await fetch('003.json');
   const result = await resultObj.json();

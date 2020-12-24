@@ -1,3 +1,5 @@
+//tsc 005 -lib esnext,dom
+
 interface NodeListOf<TNode> extends Array<TNode> {}
 
 let canvases = [];
