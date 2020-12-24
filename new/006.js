@@ -1,3 +1,4 @@
+//tsc 006 -lib esnext,dom
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -42,7 +43,7 @@ for (var _i = 0, _a = document.querySelectorAll('canvas'); _i < _a.length; _i++)
 ;
 (function () {
     return __awaiter(this, void 0, void 0, function () {
-        var _dataObj, _data, dataArrays, j, anArray, i, i;
+        var _dataObj, _data, dataArrays, j, anArray, i;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch('005.json')];
@@ -53,10 +54,7 @@ for (var _i = 0, _a = document.querySelectorAll('canvas'); _i < _a.length; _i++)
                     _data = _a.sent();
                     dataArrays = [];
                     for (j = 0; j < _data.length; j++) {
-                        anArray = [];
-                        for (i = 0; i < Object.keys(_data[0]).length; i++) {
-                            anArray.push(_data[j][Object.keys(_data[0])[i]]);
-                        }
+                        anArray = Object.values(_data[j]);
                         dataArrays.push(anArray);
                     }
                     for (i = 0; i < 3; i++) {

@@ -12,10 +12,7 @@ for (const item of document.querySelectorAll('canvas')) {
   const _data = await _dataObj.json();
   let dataArrays = [];
   for (let j = 0; j < _data.length; j++) {
-    let anArray = [];
-    for (let i = 0; i < Object.keys(_data[0]).length; i++) {
-      anArray.push(_data[j][Object.keys(_data[0])[i]]);
-    }
+    const anArray = Object.values(_data[j]);
     dataArrays.push(anArray);
   }
 
