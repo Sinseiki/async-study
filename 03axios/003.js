@@ -39,29 +39,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 //개발할 때에만 넣고 index.d.ts의 타입 추론 활용 (IE와 충돌 있음)
 (function () {
     return __awaiter(this, void 0, void 0, function () {
-        var data;
+        var data, resultData, dataTable;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, axios('003.json')];
                 case 1:
                     data = (_a.sent()).data;
-                    $('table').DataTable({
-                        data: data,
-                        columns: [{
-                                data: 'first_name'
-                            },
-                            {
-                                data: 'last_name'
-                            },
-                            {
-                                data: 'email'
-                            },
-                            {
-                                data: 'gender'
-                            },
-                            {
-                                data: 'ip_address'
-                            },
+                    resultData = data.map(function (it) { return Object.values(it); });
+                    console.log(resultData);
+                    dataTable = new simpleDatatables.DataTable('table', {
+                        data: {
+                            headings: ['ID', 'First Name', 'Last Name', 'Email', 'Gender', 'IP Address'],
+                            data: resultData
+                        },
+                        columns: [
+                            { select: 0, hidden: true }
                         ]
                     });
                     return [2 /*return*/];

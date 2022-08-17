@@ -1,17 +1,25 @@
-//tsc 002 -lib esnext,dom
+//tsc 011-2 -lib esnext,dom
 
-//import axios from '.';
-//개발할 때에만 넣고 index.d.ts의 타입 추론 활용 (IE와 충돌 있음)
+//이 파일은 서버에 업로드한 상태여야 작동합니다.
 
-document.querySelector('form')!.addEventListener('submit', async function (e) {
+//import axios from "axios"
 
-  e.preventDefault();
+(async function () {
 
-  const formData = new FormData(this);
+  try {
+    // const jsonData = await axios.post("011.json", {
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8'
+    //   }
+    // });
+    const {data} = await axios.post("002.json", {
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      }
+    });
+    document.write(data[4].last_name + "'s English Score : " + data[4].english)
+  } catch (error) {
+    console.log(error)
+  }
 
-
-  const result = await axios.post('002t.php',formData);
-
-  document.querySelector('.ajaxWrap')!.innerHTML = result.data;
-
-})
+})()

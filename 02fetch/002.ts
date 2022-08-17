@@ -1,20 +1,20 @@
-//tsc 002 -lib esnext,dom
+//tsc 011 -lib esnext,dom
 
-document.querySelector('form')!.addEventListener('submit', async function (e) {
+//이 파일은 서버에 업로드한 상태여야 작동합니다.
 
-  e.preventDefault();
+(async function () {
 
-  const formData = new FormData(this);
+  try {
+    const connection = await fetch("002.json", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      } // GET으로 보낼 때에는 Option 생략 가능
+    });
+    const jsonData = await connection.json();
+    document.write(jsonData[4].last_name + "'s English Score : " + jsonData[4].english)
+  } catch (error) {
+    console.log(error)
+  }
 
-
-  const resultOri = await fetch('002t.php', {
-    body: formData,
-    method: 'post',
-  });
-
-  //GET 방식으로 폼 데이터를 전달하는 것은 아직 IE에 맞게 구현하기는 힘듬
-
-  const result = await resultOri.text();
-  document.querySelector('.ajaxWrap')!.innerHTML = result;
-
-})
+})()

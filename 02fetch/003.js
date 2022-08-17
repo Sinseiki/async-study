@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 (function () {
     return __awaiter(this, void 0, void 0, function () {
-        var resultObj, result;
+        var resultObj, result, resultData, dataTable;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, fetch('003.json')];
@@ -46,23 +46,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     return [4 /*yield*/, resultObj.json()];
                 case 2:
                     result = _a.sent();
-                    $('table').DataTable({
-                        data: result,
-                        columns: [{
-                                data: 'first_name'
-                            },
-                            {
-                                data: 'last_name'
-                            },
-                            {
-                                data: 'email'
-                            },
-                            {
-                                data: 'gender'
-                            },
-                            {
-                                data: 'ip_address'
-                            },
+                    resultData = result.map(function (it) { return Object.values(it); });
+                    console.log(resultData);
+                    dataTable = new simpleDatatables.DataTable('table', {
+                        data: {
+                            headings: ['ID', 'First Name', 'Last Name', 'Email', 'Gender', 'IP Address'],
+                            data: resultData
+                        },
+                        columns: [
+                            { select: 0, hidden: true }
                         ]
                     });
                     return [2 /*return*/];

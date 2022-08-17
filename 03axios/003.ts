@@ -5,24 +5,16 @@
 
 (async function(){
   const {data} = await axios('003.json');
+  const resultData = data.map(it => Object.values(it))
+  console.log(resultData)
 
-  $('table').DataTable({
-    data: data,
-    columns: [{
-        data: 'first_name'
-      },
-      {
-        data: 'last_name'
-      },
-      {
-        data: 'email'
-      },
-      {
-        data: 'gender'
-      },
-      {
-        data: 'ip_address'
-      },
+  const dataTable = new simpleDatatables.DataTable('table',{
+    data: {
+      headings:['ID','First Name', 'Last Name', 'Email', 'Gender', 'IP Address'],
+      data:resultData
+    },
+    columns: [
+      {select: 0, hidden: true}
     ]
   })
 })()

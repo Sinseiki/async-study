@@ -1,4 +1,4 @@
-//tsc 011-2 -lib esnext,dom
+//tsc 002 -lib esnext,dom
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,30 +35,26 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-//이 파일은 서버에 업로드한 상태여야 작동합니다.
-//import axios from "axios"
-(function () {
+document.querySelector('form').addEventListener('submit', function (e) {
     return __awaiter(this, void 0, void 0, function () {
-        var jsonData, error_1;
+        var formData, resultOri, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, axios.post("011.json", {
-                            headers: {
-                                'Content-Type': 'application/json;charset=utf-8'
-                            }
+                    e.preventDefault();
+                    formData = new FormData(this);
+                    return [4 /*yield*/, fetch('002-2.php', {
+                            body: formData,
+                            method: 'post'
                         })];
                 case 1:
-                    jsonData = _a.sent();
-                    console.log(jsonData[4].last_name + "'s English Score : " + jsonData[4].english);
-                    return [3 /*break*/, 3];
+                    resultOri = _a.sent();
+                    return [4 /*yield*/, resultOri.text()];
                 case 2:
-                    error_1 = _a.sent();
-                    console.log(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    result = _a.sent();
+                    document.querySelector('.ajaxWrap').innerHTML = result;
+                    return [2 /*return*/];
             }
         });
     });
-})();
+});
