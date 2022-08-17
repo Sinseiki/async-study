@@ -35,8 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+//import axios from '.';
+//개발할 때에만 넣고 index.d.ts의 타입 추론 활용 (IE와 충돌 있음)
 var canvases = [];
-for (var _i = 0, _a = document.querySelectorAll('canvas'); _i < _a.length; _i++) {
+for (var _i = 0, _a = Array.apply(null, document.querySelectorAll('canvas')); _i < _a.length; _i++) {
     var item = _a[_i];
     canvases.push(item.getContext('2d'));
 }
@@ -46,7 +48,7 @@ for (var _i = 0, _a = document.querySelectorAll('canvas'); _i < _a.length; _i++)
         var data, _data, bar1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, axios({ url: '005.json' })];
+                case 0: return [4 /*yield*/, axios('005.json')];
                 case 1:
                     data = (_a.sent()).data;
                     _data = data;

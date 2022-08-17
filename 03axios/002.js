@@ -35,6 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+//import axios from '.';
+//개발할 때에만 넣고 index.d.ts의 타입 추론 활용 (IE와 충돌 있음)
 document.querySelector('form').addEventListener('submit', function (e) {
     return __awaiter(this, void 0, void 0, function () {
         var formData, result;
@@ -43,11 +45,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
                 case 0:
                     e.preventDefault();
                     formData = new FormData(this);
-                    return [4 /*yield*/, axios({
-                            url: '002t.php',
-                            data: formData,
-                            method: 'post'
-                        })];
+                    return [4 /*yield*/, axios.post('002t.php', formData)];
                 case 1:
                     result = _a.sent();
                     document.querySelector('.ajaxWrap').innerHTML = result.data;

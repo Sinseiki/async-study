@@ -36,13 +36,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 //import axios from '.';
-//개발할 때에만 넣고 타입 추론 활용 (IE와 충돌 있음)
+//개발할 때에만 넣고 index.d.ts의 타입 추론 활용 (IE와 충돌 있음)
 document.querySelector('button').addEventListener('click', function () {
     return __awaiter(this, void 0, void 0, function () {
         var data001, copy1, copy2, receiveData;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, axios({ url: '001t.html' })];
+                case 0: return [4 /*yield*/, axios('001t.html')];
                 case 1:
                     data001 = _a.sent();
                     document.querySelector('html').insertAdjacentHTML("beforeend", data001.data);

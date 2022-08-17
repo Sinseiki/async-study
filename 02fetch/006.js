@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var canvases = [];
-for (var _i = 0, _a = document.querySelectorAll('canvas'); _i < _a.length; _i++) {
+for (var _i = 0, _a = Array.apply(null, document.querySelectorAll('canvas')); _i < _a.length; _i++) {
     var item = _a[_i];
     canvases.push(item.getContext('2d'));
 }

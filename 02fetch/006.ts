@@ -1,16 +1,14 @@
 //tsc 006 -lib esnext,dom
 
-interface NodeListOf<TNode> extends Array<TNode> {}
-
-let canvases = [];
-for (const item of document.querySelectorAll('canvas')) {
-  canvases.push(item.getContext('2d'));
+let canvases:CanvasRenderingContext2D[] = [];
+for (const item of Array.apply(null,document.querySelectorAll('canvas'))) {
+  canvases.push(item.getContext('2d')!);
 };
 
 (async function(){
   const _dataObj = await fetch('005.json');
   const _data = await _dataObj.json();
-  let dataArrays = [];
+  let dataArrays:any[] = [];
   for (let j = 0; j < _data.length; j++) {
     const anArray = Object.values(_data[j]);
     dataArrays.push(anArray);

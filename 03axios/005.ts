@@ -3,15 +3,13 @@
 //import axios from '.';
 //개발할 때에만 넣고 index.d.ts의 타입 추론 활용 (IE와 충돌 있음)
 
-interface NodeListOf<TNode> extends Array<TNode> {}
-
-let canvases = [];
-for (const item of document.querySelectorAll('canvas')) {
-  canvases.push(item.getContext('2d'));
+let canvases:CanvasRenderingContext2D[] = [];
+for (const item of Array.apply(null,document.querySelectorAll('canvas'))) {
+  canvases.push(item.getContext('2d')!);
 };
 
 (async function(){
-  const {data} = await axios({url:'005.json'});
+  const {data} = await axios('005.json');
   const _data = data;
 
   const bar1 = new Chart(canvases[0], {

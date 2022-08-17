@@ -1,10 +1,8 @@
 //tsc 005 -lib esnext,dom
 
-interface NodeListOf<TNode> extends Array<TNode> {}
-
-let canvases = [];
-for (const item of document.querySelectorAll('canvas')) {
-  canvases.push(item.getContext('2d'));
+let canvases:CanvasRenderingContext2D[] = [];
+for (const item of Array.apply(null,document.querySelectorAll('canvas'))) {
+  canvases.push(item.getContext('2d')!);
 };
 
 (async function(){
