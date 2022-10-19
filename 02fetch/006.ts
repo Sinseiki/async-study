@@ -9,10 +9,12 @@ for (const item of Array.apply(null,document.querySelectorAll('canvas'))) {
   const _dataObj = await fetch('005.json');
   const _data = await _dataObj.json();
   let dataArrays:any[] = [];
-  for (let j = 0; j < _data.length; j++) {
-    const anArray = Object.values(_data[j]);
+
+  for (const it of _data){
+    const anArray = Object.values(it);
     dataArrays.push(anArray);
   }
+
 
   for (let i = 0; i < 3; i++) {
 

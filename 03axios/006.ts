@@ -12,8 +12,9 @@ for (const item of Array.apply(null,document.querySelectorAll('canvas'))) {
   const {data} = await axios('005.json');
   const _data = data;
   let dataArrays:any[] = [];
-  for (let j = 0; j < _data.length; j++) {
-    const anArray = Object.values(_data[j]);
+  
+  for (const it of _data){
+    const anArray = Object.values(it);
     dataArrays.push(anArray);
   }
 
