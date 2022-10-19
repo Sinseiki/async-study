@@ -20,9 +20,9 @@
 
 <script>
   let canvases = [];
-  for (const item of document.querySelectorAll('canvas')) {
-    canvases.push(item.getContext('2d'));
-  }
+  $('canvas').each(function(i,it){
+    canvases.push(it.getContext('2d'));
+  })
 
   $.ajax({
     url:'005.json',
